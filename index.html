@@ -11,25 +11,35 @@ Date: September 12, 2019
 	</head>
 
 	<body>
-		<!-- This is a comment -->
-		<!-- <h1>Hello World!</h1> -->
 		<script src="https://unpkg.com/filer/dist/filer.min.js"></script>
 		<script>const fs = new Filer.FileSystem();</script>
 		<script>
-		document.addEventListener("DOMContentLoaded", () => {
-			//alert("DOM ready!");
-			fs.readFile('/note', 'utf-8', function(err, data){
-				if(data != null){
-					//display data in the file
-					document.getElementById("note").innerHTML=data
-				}
-				else if(err != null){
-					//display "Welcome to my notepad!"
-					document.getElementById("note").innerHTML="Welcome to my notepad!"
-				}
-			})
-		});
+			document.addEventListener("DOMContentLoaded", () => {
+				fs.readFile('/note', 'utf-8', function(err, data){
+					if(data != null){
+						//display data in the file
+						document.getElementById("note").innerHTML=data
+					}
+					else if(err != null){
+						//display "Welcome to my notepad!"
+						document.getElementById("note").innerHTML="Welcome to my notepad!"
+					}
+				});
+			});
+
+			var save = function(){
+				fs.writeFile('/note',document.querySelector('#note').innerHTML, function(err){
+					if(err!=null){
+						console.log(err);
+					}
+				});
+			}
+
+			setInterval(save, 3000);
+
 		</script>
+
 		<div id="note" contenteditable="true"></div>
+
 	</body>
 </html>
