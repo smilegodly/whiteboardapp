@@ -1,12 +1,35 @@
+<!-- 
+Author: Matthew Clifford
+Date: September 12, 2019
+-->
+
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>My Web Page</title>
-    </head>
+	<head>
+		<meta charset="utf-8">
+		<title>My Notepad Page</title>
+	</head>
 
-    <body>
-        <!-- This is a comment -->
-        <h1>Hello World!</h1>
-    </body>
+	<body>
+		<!-- This is a comment -->
+		<!-- <h1>Hello World!</h1> -->
+		<script src="https://unpkg.com/filer/dist/filer.min.js"></script>
+		<script>const fs = new Filer.FileSystem();</script>
+		<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			//alert("DOM ready!");
+			fs.readFile('/note', 'utf-8', function(err, data){
+				if(data != null){
+					//display data in the file
+					document.getElementById("note").innerHTML=data
+				}
+				else if(err != null){
+					//display "Welcome to my notepad!"
+					document.getElementById("note").innerHTML="Welcome to my notepad!"
+				}
+			})
+		});
+		</script>
+		<div id="note" contenteditable="true"></div>
+	</body>
 </html>
