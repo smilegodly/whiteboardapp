@@ -15,6 +15,7 @@ Date: September 12, 2019
 	</head>
 
 	<body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://unpkg.com/filer/dist/filer.min.js"></script>
 		<script>const fs = new Filer.FileSystem();</script>
 		<script>
@@ -41,12 +42,25 @@ Date: September 12, 2019
 
 			setInterval(save, 3000);
 
-		</script>
-		<div class="paper container">
-			<h1>Matthews Whiteboard<img src="https://styles.redditmedia.com/t5_2qh22/styles/communityIcon_gysvz8jisp621.png" alt="Happy Masot" width="200" height="200" style="float:right"></h1>
-			<p><img src="https://media3.giphy.com/media/VkX4wFkaYklq0/giphy.gif?cid=790b761160824fdb3d686ac68b9354bfa30db3634b00eee1&rid=giphy.gif" alt="Happy Masot" width="40" height="40" style="float:left"><b>&nbsp;&nbsp;Start Typing Below !</b></p>
-		</div>
+			$(document).ready(function(){
+				$("#note").click(function(){
+					$("h5").fadeOut();
+				});
+				$("#banner").click(function(){
+					$("h5").fadeIn();
+				});
+			});
 
+		</script>
+
+		<div id="banner" class="paper container">
+			<img src="https://styles.redditmedia.com/t5_2qh22/styles/communityIcon_gysvz8jisp621.png" alt="Happy Masot" width="200" height="200" style="float:right">
+			<h1>Matthews Whiteboard</h1>
+			<div>
+				<h5><img src="https://media3.giphy.com/media/VkX4wFkaYklq0/giphy.gif?cid=790b761160824fdb3d686ac68b9354bfa30db3634b00eee1&rid=giphy.gif" alt="Happy Masot" width="40" height="40" style="float:left"><b>&nbsp;&nbsp;Start Typing !</b></h5>
+			</div>
+		</div>
+		
 		<div id="note" contenteditable="true" class="paper container"></div>
 
 	</body>
