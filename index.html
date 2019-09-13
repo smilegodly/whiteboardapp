@@ -12,9 +12,17 @@ Date: September 12, 2019
 		<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css">
 		<link rel="icon" href="https://icon-library.net/images/smile-icon/smile-icon-6.jpg">
 		<title>Matthews Whiteboard Page</title>
+		<style>
+			#banner {
+				background-color: #191919;
+			}
+			#note {
+				background-color: #191919;
+			}
+		</style>
 	</head>
 
-	<body>
+	<body bgcolor="#191919">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://unpkg.com/filer/dist/filer.min.js"></script>
 		<script>const fs = new Filer.FileSystem();</script>
@@ -27,7 +35,7 @@ Date: September 12, 2019
 					}
 					else if(err != null){
 						//display "Welcome to my notepad!"
-						document.getElementById("note").innerHTML="Welcome to my Whiteboard!"
+						document.getElementById("note").innerHTML="Welcome to my Whiteboard! (Dark Mode)"
 					}
 				});
 			});
@@ -54,13 +62,15 @@ Date: September 12, 2019
 		</script>
 
 		<div id="banner" class="paper container">
-			<img src="https://styles.redditmedia.com/t5_2qh22/styles/communityIcon_gysvz8jisp621.png" alt="Happy Masot" width="200" height="200" style="float:right">
-			<h1>Matthews Whiteboard</h1>
+			<font color="white">
+			<img src="https://res.cloudinary.com/teepublic/image/private/s--4pqExKEi--/t_Preview/b_rgb:191919,c_limit,f_jpg,h_630,q_90,w_630/v1554199148/production/designs/4550814_0.jpg" alt="Happy Masot" width="210" height="210" style="float:right">
+			<h2>Whiteboard <font color="#c46302" size=6>(Dark Mode)</font></h2>
+					
 			<div>
 				<h5><img src="https://media3.giphy.com/media/VkX4wFkaYklq0/giphy.gif?cid=790b761160824fdb3d686ac68b9354bfa30db3634b00eee1&rid=giphy.gif" alt="Happy Masot" width="40" height="40" style="float:left"><b>&nbsp;&nbsp;Start Typing !</b></h5>
 			</div>
 		</div>
-		
+	
 		<div id="note" contenteditable="true" class="paper container"></div>
 
 	</body>
