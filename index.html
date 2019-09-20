@@ -19,6 +19,9 @@ Date: September 12, 2019
 			#note {
 				background-color: #191919;
 			}
+			#autoSave {
+      			text-align: center;
+    		}
 		</style>
 	</head>
 
@@ -48,7 +51,7 @@ Date: September 12, 2019
 				});
 			}
 
-			setInterval(save, 3000);
+			setInterval(save, 20500);
 
 			$(document).ready(function(){
 				$("#note").click(function(){
@@ -59,6 +62,23 @@ Date: September 12, 2019
 				});
 			});
 
+			function startTimer(duration, display) {
+	        	var timer = duration, seconds;
+		        setInterval(function () {
+		            seconds = parseInt(timer % 60, 10);
+		            display.textContent =seconds;
+		            if (--timer < 0) {
+		                timer = duration;
+		            }
+		        }, 1000);
+	    	}
+
+	    	window.onload = function () {
+	        	var twentysec = 20,
+	            	display = document.querySelector('#time');
+	        	startTimer(twentysec, display);
+	    	};
+
 		</script>
 
 		<div id="banner" class="paper container">
@@ -67,11 +87,12 @@ Date: September 12, 2019
 			<h2>Whiteboard <font color="#c46302" size=6>(Dark Mode)</font></h2>
 					
 			<div>
-				<h5><img src="https://media3.giphy.com/media/VkX4wFkaYklq0/giphy.gif?cid=790b761160824fdb3d686ac68b9354bfa30db3634b00eee1&rid=giphy.gif" alt="Happy Masot" width="40" height="40" style="float:left"><b>&nbsp;&nbsp;Start Typing !</b></h5>
+				<h5><img src="https://media3.giphy.com/media/VkX4wFkaYklq0/giphy.gif?cid=790b761160824fdb3d686ac68b9354bfa30db3634b00eee1&rid=giphy.gif" alt="Happy Masot" width="40" height="40" style="float:left"><b>&nbsp;&nbsp;Start Typing Below!</b></h5>
 			</div>
 		</div>
 	
 		<div id="note" contenteditable="true" class="paper container"></div>
+		<div id="autoSave">Auto-Saving In <span id="time">20</span> Seconds</div>
 
 	</body>
 </html>
