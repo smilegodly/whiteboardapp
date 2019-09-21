@@ -23,6 +23,7 @@ Date: September 12, 2019
 	</head>
 
 	<body bgcolor="#191919">
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://unpkg.com/filer/dist/filer.min.js"></script>
 		<script>const fs = new Filer.FileSystem();</script>
@@ -48,6 +49,16 @@ Date: September 12, 2019
 				});
 			}
 
+			function clearData(){
+				document.querySelector("#note").innerHTML=null;
+			}
+			 function retrieveData(){
+				 fs.readFile('/note','utf-8',function(err,data){
+					 if(data!=null){
+						 document.querySelector("#note").innerHTML=data;
+					 }
+				 })
+			 }
 			setInterval(save, 3000);
 
 			$(document).ready(function(){
@@ -72,6 +83,8 @@ Date: September 12, 2019
 		</div>
 	
 		<div id="note" contenteditable="true" class="paper container"></div>
-
+	
+		<button class="button" style = "position:relative; left:360px; top:15px;color: white" onclick=clearData()>Clear</button>
+		<button class="button" style = "position:relative; left:80px; top:15px;color: white" onclick=retrieveData()>Retrieve Previous Info</button>
 	</body>
 </html>
