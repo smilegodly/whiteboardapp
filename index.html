@@ -46,10 +46,14 @@ Date: September 12, 2019
 					if(err!=null){
 						console.log(err);
 					}
+					else {
+						alert("Data is saved!");
+					}
 				});
 			}
 
 			function clearData(){
+				
 				document.querySelector("#note").innerHTML=null;
 			}
 			 function retrieveData(){
@@ -59,8 +63,8 @@ Date: September 12, 2019
 					 }
 				 })
 			 }
-			setInterval(save, 3000);
-
+			setInterval(save, 15000);
+			
 			$(document).ready(function(){
 				$("#note").click(function(){
 					$("h5").fadeOut();
