@@ -1,8 +1,3 @@
-<!-- 
-Author: Matthew Clifford
-Date: September 12, 2019
--->
-
 <!doctype html>
 <html>
 	<head>
@@ -11,18 +6,36 @@ Date: September 12, 2019
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css">
 		<link rel="icon" href="https://icon-library.net/images/smile-icon/smile-icon-6.jpg">
+		<link rel="stylesheet" href="style.css">
 		<title>Matthews Whiteboard Page</title>
-		<style>
-			#banner {
+	</head>
+	<body>
+		<!-- darkmodejs library-->
+		<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.3.4/lib/darkmode-js.min.js"></script>
+		<script>
+			var options = {
+				bottom: '64px', // default: '32px'
+				right: 'unset', // default: '32px'
+				left: '32px', // default: 'unset'
+				time: '0.5s', // default: '0.3s'
+				mixColor: '#fff', // default: '#fff'
+				backgroundColor: '#fff',  // default: '#fff'
+				buttonColorDark: '#100f2c',  // default: '#100f2c'
+				buttonColorLight: '#fff', // default: '#fff'
+				saveInCookies: true, // default: true,
+				label: '🌓' // default: ''
+			}
+			const darkmode = new Darkmode(options);
+			darkmode.showWidget();
+		</script>
+		<style type="text/css">
+			.darkmode--activated #banner, .darkmode--activated #note{
 				background-color: #191919;
 			}
-			#note {
-				background-color: #191919;
+			.darkmode--activated .textInBanner, .darkmode--activated #note{
+				color: #ffffff;
 			}
 		</style>
-	</head>
-
-	<body bgcolor="#191919">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://unpkg.com/filer/dist/filer.min.js"></script>
 		<script>const fs = new Filer.FileSystem();</script>
@@ -39,7 +52,6 @@ Date: September 12, 2019
 					}
 				});
 			});
-
 			var save = function(){
 				fs.writeFile('/note',document.querySelector('#note').innerHTML, function(err){
 					if(err!=null){
@@ -47,9 +59,7 @@ Date: September 12, 2019
 					}
 				});
 			}
-
 			setInterval(save, 3000);
-
 			$(document).ready(function(){
 				$("#note").click(function(){
 					$("h5").fadeOut();
@@ -58,20 +68,15 @@ Date: September 12, 2019
 					$("h5").fadeIn();
 				});
 			});
-
 		</script>
-
 		<div id="banner" class="paper container">
-			<font color="white">
+			<font color="black" class="textInBanner">
 			<img src="https://res.cloudinary.com/teepublic/image/private/s--4pqExKEi--/t_Preview/b_rgb:191919,c_limit,f_jpg,h_630,q_90,w_630/v1554199148/production/designs/4550814_0.jpg" alt="Happy Masot" width="210" height="210" style="float:right">
-			<h2>Whiteboard <font color="#c46302" size=6>(Dark Mode)</font></h2>
-					
+				<h2> Whiteboard </h2>	
 			<div>
 				<h5><img src="https://media3.giphy.com/media/VkX4wFkaYklq0/giphy.gif?cid=790b761160824fdb3d686ac68b9354bfa30db3634b00eee1&rid=giphy.gif" alt="Happy Masot" width="40" height="40" style="float:left"><b>&nbsp;&nbsp;Start Typing !</b></h5>
 			</div>
 		</div>
-	
 		<div id="note" contenteditable="true" class="paper container"></div>
-
 	</body>
 </html>
