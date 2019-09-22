@@ -35,7 +35,12 @@
 			.darkmode--activated .textInBanner, .darkmode--activated #note{
 				color: #ffffff;
 			}
+			.buttons, .messageToUser{ 
+					text-align: center;
+			}
 		</style>
+	</head>
+	<body bgcolor="#191919">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://unpkg.com/filer/dist/filer.min.js"></script>
 		<script>const fs = new Filer.FileSystem();</script>
@@ -59,7 +64,17 @@
 					}
 				});
 			}
-			setInterval(save, 3000);
+			function clearData(){
+				document.querySelector("#note").innerHTML=null;
+			}
+			 function retrieveData(){
+				 fs.readFile('/note','utf-8',function(err,data){
+					 if(data!=null){
+						 document.querySelector("#note").innerHTML=data;
+					 }
+				 })
+			 }
+			setInterval(save, 15000);
 			$(document).ready(function(){
 				$("#note").click(function(){
 					$("h5").fadeOut();
@@ -78,5 +93,10 @@
 			</div>
 		</div>
 		<div id="note" contenteditable="true" class="paper container"></div>
+		<p class= "messageToUser" style="color: gray">Changes will be automatically saved after 15 seconds</p>
+		<div class = "buttons">
+			<button class="button" onclick=clearData()>Clear</button>
+			<button class="button" onclick=retrieveData()>Retrieve Previous Info</button>			
+		</div>
 	</body>
 </html>
