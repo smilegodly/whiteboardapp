@@ -35,11 +35,12 @@
 			.darkmode--activated .textInBanner, .darkmode--activated #note{
 				color: #ffffff;
 			}
+			.buttons, .messageToUser{ 
+					text-align: center;
+			}
 		</style>
 	</head>
-
 	<body bgcolor="#191919">
-
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://unpkg.com/filer/dist/filer.min.js"></script>
 		<script>const fs = new Filer.FileSystem();</script>
@@ -92,8 +93,10 @@
 			</div>
 		</div>
 		<div id="note" contenteditable="true" class="paper container"></div>
-		<p style="font-size:12px;margin-left: 160px;color: gray">Changes will be automatically saved after 15 seconds</p>
-		<button class="button" style = "position:relative; left:720px; top:15px;" onclick=clearData()>Clear</button>
-		<button class="button" style = "position:relative; left:360px; top:15px;" onclick=retrieveData()>Retrieve Previous Info</button>
+		<p class= "messageToUser" style="color: gray">Changes will be automatically saved after 15 seconds</p>
+		<div class = "buttons">
+			<button class="button" onclick=clearData()>Clear</button>
+			<button class="button" onclick=retrieveData()>Retrieve Previous Info</button>			
+		</div>
 	</body>
 </html>
